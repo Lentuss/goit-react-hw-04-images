@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes, { object } from 'prop-types';
 import { Gallery } from './ImageGallery.styled';
 import ImageGalleryItem from '../ImageGalleryItem';
