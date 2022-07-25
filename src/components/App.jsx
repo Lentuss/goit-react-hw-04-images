@@ -28,22 +28,22 @@ const App = () => {
   };
 
   useEffect(() => {
+    const getImageData = async (searchQuery, page) => {
+      setLoading(true);
+      try {
+        const results = await getImages(searchQuery, page);
+        setImages([...images, ...results.hits]);
+        setTotalHits(results.total);
+      } catch (error) {
+        Notify.error('Something went wrong');
+      }
+      setLoading(false);
+    };
+
     if (searchQuery !== '') {
       getImageData(searchQuery, page);
     }
-  }, [searchQuery, page]);
-
-  const getImageData = async (searchQuery, page) => {
-    setLoading(true);
-    try {
-      const results = await getImages(searchQuery, page);
-      setImages([...images, ...results.hits]);
-      setTotalHits(results.total);
-    } catch (error) {
-      Notify.error('Something went wrong');
-    }
-    setLoading(false);
-  };
+  }, [searchQuery, page, images]);
 
   const toggleModal = () => {
     setModalShow(!modalShow);
