@@ -43,7 +43,7 @@ const App = () => {
     if (searchQuery !== '') {
       getImageData(searchQuery, page);
     }
-  }, [searchQuery, page, images]);
+  }, [searchQuery, page]); // eslint-disable-line
 
   const toggleModal = () => {
     setModalShow(!modalShow);
