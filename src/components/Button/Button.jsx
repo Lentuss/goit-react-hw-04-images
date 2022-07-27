@@ -11,7 +11,7 @@ const LoadMoreBtn = ({ onClick }) => {
 };
 
 LoadMoreBtn.propTypes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default LoadMoreBtn;

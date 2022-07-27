@@ -8,17 +8,17 @@ const modalRoot = document.querySelector('#modalRoot');
 
 const Modal = ({ onClose, children }) => {
   useEffect(() => {
+    const closeByEsc = e => {
+      if (e.code === 'Escape') {
+        onClose();
+      }
+    };
+
     window.addEventListener('keydown', closeByEsc);
     return () => {
       window.removeEventListener('keydown', closeByEsc);
     };
-  });
-
-  const closeByEsc = e => {
-    if (e.code === 'Escape') {
-      onClose();
-    }
-  };
+  }, [onClose]);
 
   const closeByBackdrop = e => {
     if (e.target === e.currentTarget) {
@@ -34,7 +34,8 @@ const Modal = ({ onClose, children }) => {
 };
 
 Modal.propTypes = {
-  onClose: PropTypes.func,
+  onClose: PropTypes.func.isRequired,
+  children: PropTypes.element.isRequired,
 };
 
 export default Modal;

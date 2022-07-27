@@ -21,8 +21,8 @@ const NotifyText = styled.p`
 `;
 
 Notify.propTypes = {
-  total: PropTypes.any,
-  length: PropTypes.number,
+  total: PropTypes.number.isRequired,
+  length: PropTypes.number.isRequired,
 };
 
 export default Notify;

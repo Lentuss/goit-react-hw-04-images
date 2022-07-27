@@ -32,7 +32,7 @@ const App = () => {
       setLoading(true);
       try {
         const results = await getImages(searchQuery, page);
-        setImages([...images, ...results.hits]);
+        setImages(images => [...images, ...results.hits]);
         setTotalHits(results.total);
       } catch (error) {
         Notify.error('Something went wrong');
@@ -43,7 +43,7 @@ const App = () => {
     if (searchQuery !== '') {
       getImageData(searchQuery, page);
     }
-  }, [searchQuery, page]); // eslint-disable-line
+  }, [searchQuery, page]);
 
   const toggleModal = () => {
     setModalShow(!modalShow);

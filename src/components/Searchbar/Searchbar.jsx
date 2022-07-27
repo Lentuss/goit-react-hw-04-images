@@ -13,12 +13,9 @@ import {
 const Searchbar = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
 
-  const reset = () => {
-    setQuery('');
-  };
-
   const handleInput = e => {
-    setQuery(e.currentTarget.value.toLowerCase());
+    if (e.currentTarget.value.toLowerCase() !== query)
+      setQuery(e.currentTarget.value.toLowerCase());
   };
 
   const handleSubmit = e => {
@@ -28,9 +25,8 @@ const Searchbar = ({ onSubmit }) => {
       Notify.info('Enter the query');
       return;
     }
-    onSubmit(query);
 
-    reset();
+    onSubmit(query);
   };
 
   return (
@@ -55,7 +51,7 @@ const Searchbar = ({ onSubmit }) => {
 };
 
 Searchbar.propTypes = {
-  onSubmit: PropTypes.func,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default Searchbar;
